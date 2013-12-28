@@ -1,29 +1,18 @@
 <h1>All Statuses</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Content</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<hr>
 
-  <tbody>
-    <% @statuses.each do |status| %>
-      <tr>
-        <td><%= status.name %></td>
-        <td><%= status.content %></td>
-        <td><%= link_to 'Show', status %></td>
-        <td><%= link_to 'Edit', edit_status_path(status) %></td>
-        <td><%= link_to 'Destroy', status, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= link_to 'New Status', new_status_path, class: "new-status btn btn-primary" %>
 
-<br>
-
-<%= link_to 'New Status', new_status_path %>
+<% @statuses.each do |status| %>
+    <div class="status">
+      <strong><%= status.name %></strong>
+      <p><%= status.content %></p>
+      <p>
+        <span><%= link_to time_ago_in_words(status.created_at) + " ago", status %></span>
+        <span class="admin">| <%= link_to 'Edit', edit_status_path(status) %> |</span>
+        <span class="admin"><%= link_to 'Destroy', status, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+      </p>
+      <hr>
+    </div>
+<% end %>
