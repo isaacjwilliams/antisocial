@@ -3,6 +3,9 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 
-$ ->
+toggle = ->
 	$('.status').hover (event) ->
 		$(this).toggleClass("hover")
+
+$(toggle)
+document.addEventListener "page:load", toggle

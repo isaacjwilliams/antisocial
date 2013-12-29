@@ -22,3 +22,16 @@ p {
 	margin-bottom: 25px;
 	color: white;
 }
+
+.back {
+	display: block;
+	padding-top: 15px;
+}
+
+.field {
+	padding-bottom: 15px;
+}
+
+.alert, .notice {
+	display: none;
+}
