@@ -3,39 +3,39 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 p {
-	margin: 4px 0;
+  margin: 4px 0;
 }
 
 .status.hover {
-	background-color: #F7F7F7;
+  background-color: #F7F7F7;
 }
 
 .status .admin {
-	display: none;
+  display: none;
 }
 
 .status.hover .admin {
-	display: inline;
+  display: inline;
 }
 
 .new-status {
-	margin-bottom: 25px;
-	color: white;
+  margin-bottom: 25px;
+  color: white;
 }
 
 .back {
-	display: block;
-	padding-top: 15px;
+  display: block;
+  padding-top: 15px;
 }
 
 .field {
-	padding-bottom: 15px;
+  padding-bottom: 15px;
 }
 
 .alert {
-	color: red;
+  color: red;
 }
 
 .notice {
-	color: green;
+  color: green;
 }
