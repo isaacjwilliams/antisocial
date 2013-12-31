@@ -28,8 +28,12 @@ p {
   padding-top: 15px;
 }
 
-.field {
+div.text {
   padding-bottom: 15px;
+
+  label {
+    display: block;
+  }
 }
 
 .alert {

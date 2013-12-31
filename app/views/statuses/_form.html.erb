@@ -1,4 +1,4 @@
-<%= form_for(@status) do |f| %>
+<%= simple_form_for(@status) do |f| %>
   <% if @status.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@status.errors.count, "error") %> prohibited this status from being saved:</h2>
@@ -11,10 +11,7 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_area :content, rows: 8, cols: 30 %>
-  </div>
+  <%= f.input :content, input_html: { rows: 8, cols: 30 } %>
   <div class="actions">
     <%= f.submit class: 'btn btn-success' %>
   </div>
