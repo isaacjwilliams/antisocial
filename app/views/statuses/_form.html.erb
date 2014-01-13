@@ -11,6 +11,7 @@
     </div>
   <% end %>
 
+  <%= f.input :user_id, collection: User.all, label_method: :profile_name %>
   <%= f.input :content, input_html: { rows: 8, cols: 30 } %>
   <div class="actions">
     <%= f.submit class: 'btn btn-success' %>
