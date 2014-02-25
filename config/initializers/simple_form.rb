@@ -90,4 +90,20 @@ SimpleForm.setup do |config|
 
   # When false, do not use translations for labels, hints or placeholders.
   # config.translate = true
+
+  # config.wrappers do |c|
+  #   b.wrapper :errors, tag: :div, class: 'has-error' do |component|
+  #     component.use :error, wrap_with: { tag: :span, class: :error }
+  #   end
+  # end
+
 end
+
+
+
+
+
+
+
+
+

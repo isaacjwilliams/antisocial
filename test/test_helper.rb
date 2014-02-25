@@ -11,5 +11,7 @@ class ActiveSupport::TestCase
   # -- they do not yet inherit this setting
   fixtures :all
 
+  I18n.enforce_available_locales = false
+
   # Add more helper methods to be used by all tests here...
 end

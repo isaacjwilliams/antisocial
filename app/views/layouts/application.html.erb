@@ -43,6 +43,15 @@
 	      </div>
 	      <button type="submit" class="btn btn-default">Submit</button>
 	    </form>
+	    <ul class="nav navbar-nav navbar-right">
+	    	<% if user_signed_in? %>
+		    	<li><%= link_to current_user.first_name + " " + current_user.last_name, edit_user_registration_path %></li>
+		    	<li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+		    <% else %>
+		    	<li><%= link_to "Register", new_user_registration_path %></li>
+		    	<li><%= link_to "Log in", new_user_session_path %></li>
+	    	<% end %>
+	    </ul>
 <!-- 	    <ul class="nav navbar-nav navbar-right">
 	      <li><a href="#">Link</a></li>
 	      <li class="dropdown">
