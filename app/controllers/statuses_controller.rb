@@ -1,5 +1,5 @@
 class StatusesController < ApplicationController
-  before_action :authenticate_user!, only: [:new]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
   before_action :set_status, only: [:show, :edit, :update, :destroy]
 
   # GET /statuses
