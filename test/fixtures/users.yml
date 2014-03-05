@@ -1,5 +1,11 @@
 isaac:
   first_name: "Isaac"
   last_name: "Williams"
-  profile_name: "isaacjw"
+  profile_name: "ijw"
   email: "isaac@thewilliams.ws"
+
+adam:
+  first_name: "Adam"
+  last_name: "Williams"
+  profile_name: "aiwilliams"
+  email: "adam@thewilliams.ws"
