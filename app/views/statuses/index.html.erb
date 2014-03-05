@@ -6,6 +6,7 @@
 
 <% @statuses.each do |status| %>
     <div class="status">
+      <div><%= image_tag status.user.gravatar_url %></div>
       <strong><%= status.user.profile_name %></strong>
       <p><%= status.content %></p>
       <p>
