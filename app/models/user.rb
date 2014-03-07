@@ -18,6 +18,10 @@ class User < ActiveRecord::Base
   						   	message: 'Must be formatted correctly.'
   						  }
 
+  def full_name
+    first_name + " " + last_name
+  end
+
   def gravatar_url
     stripped_email = email.strip
     downcased_email = stripped_email.downcase
