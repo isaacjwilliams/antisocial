@@ -39,7 +39,7 @@
 			        <ul class="dropdown-menu">
 			          <li><%= link_to "Preferences", edit_user_registration_path %></li>
 			          <li class="divider"></li>
-			          <li><a href="#">link to current user's profile page here</a></li> <!-- Put link to current user's profile page here -->
+			          <li><%= link_to "Profile", current_user.profile_name %></li> <!-- Put link to current user's profile page here -->
 			        </ul>
 			      </li>
 			    </ul>
