@@ -1,14 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @status.user.profile_name %>
-</p>
+<div class="well">
+	<div class="row">
+		<div class="col-md-1">
+			<div><%= image_tag @status.user.gravatar_url %></div> <!-- Why does this work?? -->
+		</div>
+		<div class="col-md-4">
+			<p>
+			  <strong>Name:</strong>
+			  <%= @status.user.profile_name %>
+			</p>
 
-<p>
-  <strong>Content:</strong>
-  <%= @status.content %>
-</p>
+			<p>
+			  <strong>Content:</strong>
+			  <%= @status.content %>
+			</p>
+		</div>
+	</div>
+</div>
 
 <%= link_to 'Edit', edit_status_path(@status) %> |
 <%= link_to 'Back', statuses_path %>
