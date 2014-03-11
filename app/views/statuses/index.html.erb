@@ -16,7 +16,7 @@
           <p>
             <span><%= link_to time_ago_in_words(status.created_at) + " ago", status %></span>
             <% if user_signed_in? %>
-              <% if current_user.statuses %>
+              <% if status.user == current_user %>
                 <span class="admin">| <%= link_to 'Edit', edit_status_path(status) %></span>
                 <span class="admin">| <%= link_to 'Destroy', status, method: :delete, data: { confirm: 'Are you sure?' } %></span>
               <% end %>
