@@ -17,5 +17,9 @@
 	</div>
 </div>
 
-<%= link_to 'Edit', edit_status_path(@status) %> |
+<% if user_signed_in? %>
+	<% if @status.user == current_user %>
+		<%= link_to 'Edit', edit_status_path(@status) %> |
+	<% end %>
+<% end %>
 <%= link_to 'Back', statuses_path %>
