@@ -5,6 +5,10 @@ gem 'rails', '4.0.0'
 
 # Use sqlite3 as the database for Active Record
 
+group :test do
+	gem "shoulda"
+end
+
 group :development, :test do
 	gem 'sqlite3'
 end
