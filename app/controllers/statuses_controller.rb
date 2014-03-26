@@ -6,6 +6,7 @@ class StatusesController < ApplicationController
   # GET /statuses.json
   def index
     @statuses = Status.includes(:user).all
+    @statuses = Status.all(:order => "created_at DESC")
   end
 
   # GET /statuses/1
