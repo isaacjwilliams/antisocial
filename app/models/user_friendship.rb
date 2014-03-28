@@ -1,11 +1,13 @@
 class UserFriendship < ActiveRecord::Base
-	def change
-		create_table :user_friendships do |t|
-			t.integer :user_id
-			t.integer :friend_id
-			t.timestamps
-		end
+	belongs_to :user
+	
+	# def change
+	# 	create_table :user_friendships do |t|
+	# 		t.integer :user_id
+	# 		t.integer :friend_id
+	# 		t.timestamps
+	# 	end
 
-		add_index :user_friendships, [:user_id, :friend_id]
-	end
+	# 	add_index :user_friendships, [:user_id, :friend_id]
+	# end
 end
