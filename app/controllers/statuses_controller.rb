@@ -7,7 +7,6 @@ class StatusesController < ApplicationController
   def index
     @statuses = Status.includes(:user).all
     @statuses = Status.all(:order => "created_at DESC")
-    @statuses = Status.paginate(:page => params[:page], :per_page => 5)
   end
 
   # GET /statuses/1
