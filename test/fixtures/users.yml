@@ -9,3 +9,9 @@ adam:
   last_name: "Williams"
   profile_name: "aiwilliams"
   email: "adam@thewilliams.ws"
+
+jack:
+  first_name: "Jack"
+  last_name: "Coutu"
+  profile_name: "jaq"
+  email: "4theloveofpeanutbutter@gmail.com"
