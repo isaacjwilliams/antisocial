@@ -28,12 +28,4 @@
     </div>
 <% end %>
 
-<script src="assets/jquery.min.js"></script>
-<script src="assets/jquery.endless-scroll.js"></script>
-<script>
-  // using default options
-  $(window).endlessScroll({
-    fireDelay: false,
-    loader: "Sorry for the wait... loading more statuses..."
-  });
-</script>
+<%= will_paginate @statuses %>
