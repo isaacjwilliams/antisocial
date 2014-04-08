@@ -1,6 +1,6 @@
 class UserFriendship < ActiveRecord::Base
 	belongs_to :user
-	belongs_to :friend, class_name: 'User', foreign_key: 'friend_id'
+	belongs_to :friend, class_name: 'User'
 	
 	# def change
 	# 	create_table :user_friendships do |t|

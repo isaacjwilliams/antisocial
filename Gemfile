@@ -9,6 +9,7 @@ gem 'will_paginate', '~> 3.0'
 
 group :test do
 	gem "shoulda"
+	gem "pry-debugger"
 end
 
 group :development, :test do
