@@ -9,6 +9,8 @@ Treebook::Application.routes.draw do
     get "preferences", to: "devise/registrations#edit"
   end
 
+  resources :user_friendships
+
   resources :statuses
   get 'feed', to: 'statuses#index', as: :feed
   root to: 'statuses#index'
