@@ -50,4 +50,8 @@ class UserTest < ActiveSupport::TestCase
 		users(:isaac).friends.reload
 		assert users(:isaac).friends.include?(users(:jack))
 	end
+
+	test "that calling to_param on a user returns the profile name" do
+		assert_equal "ijw", users(:isaac).to_param
+	end
 end
