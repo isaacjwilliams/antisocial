@@ -3,6 +3,7 @@ isaac:
   last_name: "Williams"
   profile_name: "ijw"
   email: "isaac@thewilliams.ws"
+  encrypted_password: $2a$10$Fh/Hm8RxDsuPTeBUr6864.GARlcmt7zF2WspaXGr3BIv2C27N.osq
 
 adam:
   first_name: "Adam"

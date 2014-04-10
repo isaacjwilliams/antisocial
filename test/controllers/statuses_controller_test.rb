@@ -75,5 +75,11 @@ class StatusesControllerTest < ActionController::TestCase
 
     assert_redirected_to statuses_path
   end
+
+  # test "that a status cannot have more than 455 characters" do
+  #   sign_in users(:isaac)
+  #   post :create, status: { length: 500 }
+  #   assert_response :failure
+  # end
 end
 
