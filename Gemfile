@@ -6,6 +6,7 @@ gem 'rails', '4.0.0'
 # Use sqlite3 as the database for Active Record
 
 gem 'will_paginate', '~> 3.0'
+gem 'state_machine'
 
 group :test do
 	gem "shoulda"
