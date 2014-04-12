@@ -8,7 +8,7 @@ class StatusesController < ApplicationController
     @statuses = Status.includes(:user).paginate(:page => params[:page], :per_page => 10, :order => "created_at DESC")
     respond_to do |format|
       format.html
-      format.js
+      format.json
     end
   end
 
