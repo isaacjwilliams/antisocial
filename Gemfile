@@ -11,6 +11,7 @@ gem 'state_machine'
 group :test do
 	gem "shoulda"
 	gem "pry-debugger"
+	gem "factory_girl"
 end
 
 group :development, :test do
