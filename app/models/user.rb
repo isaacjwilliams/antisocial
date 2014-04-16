@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   						   	message: 'Must be formatted correctly.'
   						  }
 
-  has_many :statuses
+  has_many :statuses, dependent: :delete_all
   has_many :user_friendships
   has_many :friends, -> { where user_friendships: { state: 'accepted' } },
                      through: :user_friendships
