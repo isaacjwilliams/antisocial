@@ -3,7 +3,7 @@ class UserFriendship < ActiveRecord::Base
 	belongs_to :friend, class_name: 'User'
 
 	state_machine :state, initial: :pending do
-		after_transition on: :accept, do: :send_accepted_email
+		after_transition on: :accept, do: [:send_accepted_email, :accept_mutual_friendship!]
 
 		state :requested
 
@@ -28,5 +28,15 @@ class UserFriendship < ActiveRecord::Base
 
 	def send_accepted_email
 		UserNotifier.friend_request_accepted(id).deliver
+	end
+
+	def mutual_friendship
+		self.class.where({user_id: friend_id, friend_id: user_id}).first
+	end
+
+	def accept_mutual_friendship!
+		# Grab the mutual friendship and update the state without using
+		# the state machine so as not to invoke callbacks.
+		mutual_friendship.update_attribute(:state, 'accepted')
 	end
 end
