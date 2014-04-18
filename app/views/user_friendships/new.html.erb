@@ -1,7 +1,5 @@
 <% if @friend %>
-	<h1><%= @friend.full_name %></h1>
-
-	<p>Do you really want to friend <%= @friend.full_name %>?</p>
+	<h3 id="friend-confirmation">Do you really want to friend <%= @friend.profile_name %>?</h3>
 
 	<%= form_for @user_friendship, method: :post do |form| %>
 		<div class="form form-actions">

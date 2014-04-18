@@ -4,15 +4,17 @@
 			<div><%= image_tag @user.gravatar_url, class: "img-rounded" %></div>
 		</div>
 		<div class="col-md-4">
-			<h1><%= @user.full_name %></h1>
+			<h1><%= @user.profile_name %> <small><%= @user.full_name %></small></h1>
 			<% if @user == current_user %>
 				<h6>To change your avatar, create a <a href="http://en.gravatar.com/">Gravatar</a> account.</h6>
 			<% end %>
 		</div>
-		<% unless @user == current_user %>
-			<div class="col-md-1 col-md-push-5 add-friend-btn">
-				<%= link_to "Add Friend", new_user_friendship_path(friend_id: @user), class: "btn btn-primary" %>
-			</div>
+		<% if %>
+			<% unless @user == current_user %>
+				<div class="col-md-1 col-md-push-5 add-friend-btn">
+					<%= link_to "Add Friend", new_user_friendship_path(friend_id: @user), class: "btn btn-primary" %>
+				</div>
+			<% end %>
 		<% end %>
 	</div>
 </div>
