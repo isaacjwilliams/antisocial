@@ -40,8 +40,8 @@ class UserFriendshipTest < ActiveSupport::TestCase
   context "#mutual_friendship" do
     setup do
       UserFriendship.request users(:isaac), users(:jack)
-      friendship1 = users(:isaac).user_friendship.where(friend_id: users(:jack).id).first
-      friendship2 = users(:jack).user_friendship.where(friend_id: users(:isaac).id).first
+      @friendship1 = users(:isaac).user_friendships.where(friend_id: users(:jack).id).first
+      @friendship2 = users(:jack).user_friendships.where(friend_id: users(:isaac).id).first
     end
 
     should "correctly find the mutual friendship" do
@@ -55,8 +55,8 @@ class UserFriendshipTest < ActiveSupport::TestCase
     end
 
     should "accept the mutual friendship" do
-      friendship1 = users(:isaac).user_friendship.where(friend_id: users(:jack).id).first
-      friendship2 = users(:jack).user_friendship.where(friend_id: users(:isaac).id).first
+      friendship1 = users(:isaac).user_friendships.where(friend_id: users(:jack).id).first
+      friendship2 = users(:jack).user_friendships.where(friend_id: users(:isaac).id).first
 
       friendship1.accept_mutual_friendship!
       friendship2.reload
@@ -103,6 +103,33 @@ class UserFriendshipTest < ActiveSupport::TestCase
       assert_difference 'ActionMailer::Base.deliveries.size', 1 do
         UserFriendship.request(users(:isaac), users(:jack))
       end
+    end
+  end
+
+  context "#delete_mutual_friendship!" do
+    setup do
+      UserFriendship.request users(:isaac), users(:jack)
+      @friendship1 = users(:isaac).user_friendships.where(friend_id: users(:jack).id).first
+      @friendship2 = users(:jack).user_friendships.where(friend_id: users(:isaac).id).first      
+    end
+
+    should "delete the mutual friendship" do
+      assert_equal @friendship1, @friendship2.mutual_friendship
+      @friendship1.delete_mutual_friendship!
+      assert !UserFriendship.exists?(@friendship2.id)
+    end
+  end
+
+  context "on destroy" do
+    setup do
+      UserFriendship.request users(:isaac), users(:jack)
+      @friendship1 = users(:isaac).user_friendships.where(friend_id: users(:jack).id).first
+      @friendship2 = users(:jack).user_friendships.where(friend_id: users(:isaac).id).first
+    end
+
+    should "delete the mutual_friendship" do
+      @friendship1.destroy
+      assert !UserFriendship.exists?(@friendship2.id)
     end
   end
 end
