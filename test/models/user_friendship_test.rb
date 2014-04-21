@@ -6,9 +6,9 @@ class UserFriendshipTest < ActiveSupport::TestCase
 
   test "that creating a friendship works without raising an exception" do
   	assert_nothing_raised do
-		UserFriendship.create user: users(:isaac), friend: users(:jack)
+		  UserFriendship.create user: users(:isaac), friend: users(:jack)
+    end
 	end
-  end
 
   test "that creating a friendship based on user id and friend id works" do
   	UserFriendship.create user_id: users(:isaac).id, friend_id: users(:jack).id
@@ -132,4 +132,17 @@ class UserFriendshipTest < ActiveSupport::TestCase
       assert !UserFriendship.exists?(@friendship2.id)
     end
   end
+
+  # context "user deleted" do
+  #   setup do
+  #     @friendship1 = users(:isaac).user_friendships.where(friend_id: users(:jack).id).first
+  #     users(:jack).destroy
+  #   end
+
+  #   should "delete all a user's friendships when user cancels account" do
+  #     sign_in users(:isaac)
+  #     get :friends
+  #     assert_response :success
+  #   end
+  # end
 end

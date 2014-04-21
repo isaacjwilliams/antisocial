@@ -45,4 +45,16 @@ class UserFriendship < ActiveRecord::Base
 	def delete_mutual_friendship!
 		mutual_friendship.delete
 	end
+
+	def pending?
+		self.state == 'pending'
+	end
+
+	def accepted?
+		self.state == "accepted"
+	end
+
+	def requested?
+		self.state == "requested"
+	end
 end
