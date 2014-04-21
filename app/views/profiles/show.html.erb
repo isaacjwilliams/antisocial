@@ -9,10 +9,20 @@
 				<h6>To change your avatar, create a <a href="http://en.gravatar.com/">Gravatar</a> account.</h6>
 			<% end %>
 		</div>
-		<% if %>
+		<% if user_signed_in? %>
 			<% unless @user == current_user %>
-				<div class="col-md-1 col-md-push-5 add-friend-btn">
-					<%= link_to "Add Friend", new_user_friendship_path(friend_id: @user), class: "btn btn-primary" %>
+				<div class="col-md-1 col-md-push-5">
+					<% unless @user_friendship %>
+						<%= link_to "Add Friend", new_user_friendship_path(friend_id: @user), class: "btn btn-primary add-friend-btn" %>
+					<% else %>
+						<% if @user_friendship.requested? %>
+							<%= link_to "Accept friendship", edit_user_friendship_path(@user_friendship), class: "btn btn-primary accept-friendship-btn" %>
+						<% elsif @user_friendship.pending? %>
+							<%= link_to "Delete request", edit_user_friendship_path(@user_friendship), class: "btn btn-danger delete-request-btn" %>
+						<% else %>
+							<%= link_to "Unfriend", edit_user_friendship_path(@user_friendship), class: "btn btn-danger unfriend-btn" %>
+						<% end %>
+					<% end %>
 				</div>
 			<% end %>
 		<% end %>
