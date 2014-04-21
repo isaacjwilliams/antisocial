@@ -23,6 +23,9 @@
 	  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	    <ul class="nav navbar-nav">
 	      <li class="active"><%= link_to "All Statuses", feed_path %></li>
+	      <% if user_signed_in? %>
+	      	<li><%= link_to "Activity Feed", activities_path %></li>
+	      <% end %>
 	      <!-- <li><a href="#">About</a></li> -->
 	    </ul>
 	    <form class="navbar-form navbar-left navbar-right" role="search">

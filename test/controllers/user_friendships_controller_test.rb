@@ -70,7 +70,7 @@ class UserFriendshipsControllerTest < ActionController::TestCase
 
 			should "display the friend's name" do
 				get :new, friend_id: users(:jack)
-				assert_match /#{users(:jack).full_name}/, response.body
+				assert_match /#{users(:jack).profile_name}/, response.body
 			end
 
 			should "assign a new user friendship" do
@@ -95,7 +95,7 @@ class UserFriendshipsControllerTest < ActionController::TestCase
 
 			should "ask if you really want to friend the user" do
 				get :new, friend_id: users(:jack)
-				assert_match /Do you really want to friend #{users(:jack).full_name}?/, response.body
+				assert_match /Do you really want to friend #{users(:jack).profile_name}?/, response.body
 			end
 		end
 	end
@@ -184,21 +184,32 @@ class UserFriendshipsControllerTest < ActionController::TestCase
 				@user_friendship = create(:pending_user_friendship, user: users(:isaac), friend: @friend)
 				create(:pending_user_friendship, user: @friend, friend: users(:isaac))
 				sign_in users(:isaac)
-				put :accept, id: @user_friendship
-				@user_friendship.reload
+				def do_put
+					put :accept, id: @user_friendship
+					@user_friendship.reload
+				end
 			end
 
 			should "assign a user_friendship" do
+				do_put
 				assert assigns(:user_friendship)
 				assert_equal @user_friendship, assigns(:user_friendship)
 			end
 
 			should "update the state to accepted" do
+				do_put
 				assert_equal 'accepted', @user_friendship.state
 			end
 
 			should "have a success flash message" do
+				do_put
 				assert_equal "You are now friends with #{@user_friendship.friend.profile_name}", flash[:success]
+			end
+
+			should "create activity" do
+				assert_difference "Activity.count" do
+					do_put
+				end
 			end
 		end
 	end

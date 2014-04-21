@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
                                       foreign_key: :user_id,
                                       dependent: :delete_all
   has_many :pending_friends, through: :pending_user_friendships, source: :friend, dependent: :delete_all
+  has_many :activities
 
   def full_name
     first_name + " " + last_name
@@ -44,5 +45,12 @@ class User < ActiveRecord::Base
     hash = Digest::MD5.hexdigest(downcased_email)
 
     "http://gravatar.com/avatar/#{hash}"
+  end
+
+  def create_activity(item, action)
+    activity = activities.new
+    activity.action = action
+    activity.save
+    activity
   end
 end

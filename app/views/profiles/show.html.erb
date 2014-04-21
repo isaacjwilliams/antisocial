@@ -35,6 +35,9 @@
 			<%= status.content %>
 			<hr />
 			<%= link_to time_ago_in_words(status.created_at), status_path(status) %> ago
+			<% if user_signed_in? and @user == current_user %>
+				| <%= link_to 'Destroy', status, method: :delete, data: { confirm: 'Are you sure?' } %>
+			<% end %>
 		</div>
 	<% end %>
 <% end %>

@@ -3,6 +3,7 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
 	should have_many(:user_friendships)
 	should have_many(:friends)
+	should have_many(:activities)
 
 	test "a user should enter a first name" do
 		user = User.new
@@ -53,5 +54,13 @@ class UserTest < ActiveSupport::TestCase
 
 	test "that calling to_param on a user returns the profile name" do
 		assert_equal "ijw", users(:isaac).to_param
+	end
+
+	context "#create_activity" do
+		should "increase the Activity count" do
+			assert_difference 'Activity.count' do
+				users(:isaac).create_activity(statuses(:one), 'created')
+			end
+		end
 	end
 end

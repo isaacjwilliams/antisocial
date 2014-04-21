@@ -1,4 +1,5 @@
 Treebook::Application.routes.draw do
+  resources :activities, only: [:index]
   get "profiles/show"
 
   as :user do

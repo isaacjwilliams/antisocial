@@ -39,6 +39,14 @@ class StatusesControllerTest < ActionController::TestCase
     assert_redirected_to status_path(assigns(:status))
   end
 
+  test "should create an activity item for the status when logged in" do
+    sign_in users(:isaac)
+    
+    assert_difference('Activity.count') do
+      post :create, status: { content: @status.content }
+    end
+  end
+
   test "should show status" do
     get :show, id: @status
     assert_response :success
@@ -68,6 +76,13 @@ class StatusesControllerTest < ActionController::TestCase
     assert_redirected_to status_path(assigns(:status))
   end
 
+  test "should create an activity item when the status is updated" do
+    sign_in users(:isaac)
+    assert_difference 'Activity.count' do
+      put :update, id: @status, status: { content: @status.content }
+    end
+  end
+
   test "should destroy status" do
     assert_difference('Status.count', -1) do
       delete :destroy, id: @status
@@ -79,7 +94,7 @@ class StatusesControllerTest < ActionController::TestCase
   # test "that a status cannot have more than 455 characters" do
   #   sign_in users(:isaac)
   #   post :create, status: { length: 500 }
-  #   assert_response :failure
+  #   assert_response :error
   # end
 end
 
