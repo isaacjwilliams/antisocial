@@ -258,7 +258,7 @@ class UserFriendshipsControllerTest < ActionController::TestCase
 
 			should "set the flash" do
 				delete :destroy, id: @user_friendship
-				assert_equal "Friendship destroyed. :(", flash[:success]
+				assert_equal "Friendship destroyed.", flash[:success]
 			end	
 		end
 	end

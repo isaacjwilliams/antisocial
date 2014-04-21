@@ -1,5 +1,15 @@
 <div class="page-header">
-	<h1>Friends</h1>
+	<div class="row">
+		<div>
+			<h1>Friends
+				<% if @user_friendships.count == 0 %>
+					<small>You have no friends.</small>
+				<% else %>
+					<small>You have <%= @user_friendships.count %> <%= 'friend'.pluralize(@user_friendships.count) %>.</small>
+				<% end %>
+			</h1>
+		</div>
+	</div>
 </div>
 
 <% @user_friendships.each do |friendship| %>
