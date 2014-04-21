@@ -1,3 +1,5 @@
 Hi there, <%= @friend.profile_name %>.
 
 <%= @user.profile_name %> wants to be friends with you on Antisocial. Whaddya say?
+
+<%= link_to "Your Friends", user_friendships_path(only_path: false) %>

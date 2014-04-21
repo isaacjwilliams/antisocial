@@ -13,11 +13,11 @@
 <div class="form-actions">
 	<% if @user_friendship.requested? %>
 		<%= form_for @user_friendship, url: accept_user_friendship_path(@user_friendship), method: :put do |form| %>
-			<div class="accept-friendship-btn"><%= submit_tag "Accept Friendship", class: "btn btn-primary" %></div>
+			<div class="accept-friendship-btn-index"><%= submit_tag "Accept Friendship", class: "btn btn-primary" %></div>
 		<% end %>
 	<% end %>
 
 	<%= form_for @user_friendship, url: user_friendship_path(@user_friendship), method: :delete do |form| %>
-		<div class="delete-friendship-btn"><%= submit_tag "Delete Friendship", class: "btn btn-danger" %></div>
+		<div><%= submit_tag "Delete Friendship", class: "btn btn-danger" %></div>
 	<% end %>
 </div>
