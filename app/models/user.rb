@@ -49,8 +49,9 @@ class User < ActiveRecord::Base
 
   def create_activity(item, action)
     activity = activities.new
+    activity.targetable = item
     activity.action = action
-    activity.save
+    activity.save!
     activity
   end
 end

@@ -1,14 +1,20 @@
 <h1>Activity Feed</h1>
 
+<hr>
+
 <% @activities.each do |activity| %>
 	<div class="activity">
 		<div class="row">
-		<div class="col-md-1">
-			<div><%= link_to image_tag(activity.user.gravatar_url, class: "img-rounded"), profile_path(activity.user) %></div>
+			<div class="col-md-1">
+				<div><%= link_to image_tag(activity.user.gravatar_url, class: "img-rounded"), profile_path(activity.user) %></div>
+			</div>
+			<div class="col-md-6">
+				<strong><%= activity.user.profile_name %></strong>
+				<%= render partial: "activities/#{activity.targetable_type.underscore}/#{activity.action}", 
+            	locals: { activity: activity } %>
+            	<small><%= time_ago_in_words(activity.created_at) %> ago</small>
+			</div>
 		</div>
-		<div class="col-md-6">
-			<strong><%= activity.user.profile_name %></strong>
-			<%= render "activities/status/created" %>
-		</div>
+		<hr>
 	</div>
 <% end %>

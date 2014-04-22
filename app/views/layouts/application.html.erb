@@ -16,15 +16,15 @@
 	      <span class="icon-bar"></span>
 	      <span class="icon-bar"></span>
 	    </button>
-	    <a class="navbar-brand" href="#">Antisocial</a>
+		<%= link_to "Antisocial", activities_path, class: "navbar-brand" %>
 	  </div>
 
 	  <!-- Collect the nav links, forms, and other content for toggling -->
 	  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	    <ul class="nav navbar-nav">
-	      <li class="active"><%= link_to "All Statuses", feed_path %></li>
+	      <li class="all-statuses"><%= link_to "All Statuses", feed_path %></li>
 	      <% if user_signed_in? %>
-	      	<li><%= link_to "Activity Feed", activities_path %></li>
+	      	<li class="activity-feed"><%= link_to "Activity Feed", activities_path %></li>
 	      <% end %>
 	      <!-- <li><a href="#">About</a></li> -->
 	    </ul>
@@ -48,10 +48,10 @@
 			        </ul>
 			      </li>
 			    </ul>
-		    	<li><%= link_to "Sign Out", logout_path %></li>
+		    	<li id="sign-out"><%= link_to "Sign Out", logout_path %></li>
 		    <% else %>
-		    	<li><%= link_to "Register", register_path %></li>
-		    	<li><%= link_to "Log in", login_path %></li>
+		    	<li id="register"><%= link_to "Register", register_path %></li>
+		    	<li id="log-in"><%= link_to "Log in", login_path %></li>
 	    	<% end %>
 	    </ul>
 	  </div>
@@ -68,4 +68,11 @@
 		<%= yield %>
 	</div>
 </body>
+
+<script>
+	$( ".all-statuses, .activity-feed, #sign-out, #register, #log-in" ).mousedown(function() {
+		$( this ).addClass( "active" );
+	});
+</script>
+
 </html>

@@ -64,6 +64,7 @@ class StatusesController < ApplicationController
   def destroy
     @status.destroy
     respond_to do |format|
+      current_user.create_activity(@status, 'deleted')
       format.html { redirect_to statuses_url }
       format.json { head :no_content }
     end

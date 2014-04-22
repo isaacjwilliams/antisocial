@@ -1,0 +1,1 @@
+<p><%= current_user.profile_name %> accepted friendship with <%= link_to "#{current_user.user_friendships.load.last.friend.profile_name}", profile_path(current_user.user_friendships.load.last.friend) %>.</p>

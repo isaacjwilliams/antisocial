@@ -1,20 +1,18 @@
-<div class="well">
+<div class="page-header">
 	<div class="row">
 		<div class="col-md-1">
 			<div><%= image_tag @status.user.gravatar_url %></div> <!-- Why does this work?? -->
 		</div>
 		<div class="col-md-4">
-			<p>
-			  <strong>Name:</strong>
-			  <%= @status.user.profile_name %>
-			</p>
-
-			<p>
-			  <strong>Content:</strong>
-			  <%= @status.content %>
-			</p>
+			<h1><%= @status.user.profile_name %> <small><%= @status.user.full_name %></small></h1>
 		</div>
 	</div>
+</div>
+
+<div class="well">
+	<p>
+	  <%= @status.content %>
+	</p>
 </div>
 
 <% if user_signed_in? %>
