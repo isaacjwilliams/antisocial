@@ -1,4 +1,5 @@
 Treebook::Application.routes.draw do
+
   resources :activities, only: [:index]
   get "profiles/show"
 
@@ -25,7 +26,7 @@ Treebook::Application.routes.draw do
 
   resources :statuses
   get 'feed', to: 'statuses#index', as: :feed
-  root to: 'statuses#index'
+  root to: 'activities#index'
 
   get "/:id", to: "profiles#show", as: "profile"
 
