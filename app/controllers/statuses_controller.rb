@@ -5,7 +5,7 @@ class StatusesController < ApplicationController
   # GET /statuses
   # GET /statuses.json
   def index
-    @statuses = Status.includes(:user).order('created_at DESC').paginate(:page => params[:page], :per_page => 10)
+    @statuses = Status.includes(:user).order('created_at DESC').paginate(:page => params[:page], :per_page => 15)
     respond_to do |format|
       format.html
       format.json
