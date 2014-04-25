@@ -1,14 +1,12 @@
 <div class="page-header">
-	<div class="row">
-		<div>
-			<h1>Friends
-				<% if @user_friendships.count == 0 %>
-					<small>You have no friends.</small>
-				<% else %>
-					<small>You have <%= @user_friendships.count %> <%= 'friend'.pluralize(@user_friendships.count) %>.</small>
-				<% end %>
-			</h1>
-		</div>
+	<div>
+		<h1>Friends
+			<% if @user_friendships.count == 0 %>
+				<small>You have no friends.</small>
+			<% else %>
+				<small>You have <%= @user_friendships.count %> <%= 'friend'.pluralize(@user_friendships.count) %>.</small>
+			<% end %>
+		</h1>
 	</div>
 </div>
 

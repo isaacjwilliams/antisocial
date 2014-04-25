@@ -7,6 +7,7 @@ gem 'rails', '4.0.0'
 
 gem 'will_paginate', '~> 3.0'
 gem 'state_machine'
+gem 'draper'
 
 group :test do
 	gem "shoulda"
