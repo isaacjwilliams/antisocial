@@ -14,7 +14,8 @@ class User < ActiveRecord::Base
   validates :profile_name, presence: true,
   						  uniqueness: true,
   						  format: {
-  						    with: /[a-zA-Z0-9_-]+/,
+  						    with: /^[a-zA-Z0-9_-]+$/,
+                  multiline: true,
   						   	message: 'Must be formatted correctly.'
   						  }
 
@@ -29,11 +30,16 @@ class User < ActiveRecord::Base
                                       foreign_key: :user_id,
                                       dependent: :delete_all
   has_many :pending_friends, through: :pending_user_friendships, source: :friend, dependent: :delete_all
-  has_many :requested_user_friendships, -> { where state: 'pending' },
+  has_many :requested_user_friendships, -> { where state: 'requested' },
                                       class_name: 'UserFriendship',
                                       foreign_key: :user_id,
                                       dependent: :delete_all
   has_many :requested_friends, through: :pending_user_friendships, source: :friend, dependent: :delete_all
+  has_many :blocked_user_friendships, -> { where state: 'blocked' },
+                                      class_name: 'UserFriendship',
+                                      foreign_key: :user_id,
+                                      dependent: :delete_all
+  has_many :blocked_friends, through: :pending_user_friendships, source: :friend, dependent: :delete_all
   has_many :activities
 
   def full_name

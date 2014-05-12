@@ -16,3 +16,9 @@ jack:
   last_name: "Coutu"
   profile_name: "jaq"
   email: "4theloveofpeanutbutter@gmail.com"
+
+blocked_friend:
+  first_name: "Blocked"
+  last_name: "Friend"
+  profile_name: "youblockedme"
+  email: "blocked@igotblocked.com"

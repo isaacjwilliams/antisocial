@@ -10,6 +10,14 @@
 	</div>
 </div>
 
+<div class="friend-list-selection">
+	<strong>Friend list:</strong>
+	<%= link_to "All", user_friendships_path %> |
+	<%= link_to "Requested", user_friendships_path(list: 'requested') %> |
+	<%= link_to "Pending", user_friendships_path(list: 'pending') %> |
+	<%= link_to "Blocked", user_friendships_path(list: 'blocked') %>
+</div>
+
 <% @user_friendships.each do |friendship| %>
 	<% friend = friendship.friend %>
 	<div class="friend-index">
@@ -27,6 +35,9 @@
 					<% end %>
 					<% if friendship.accepted? %>
 						<em>Friendship started <%= friendship.updated_at %>.</em> <%= link_to "Update friendship", edit_user_friendship_path(friendship) %>
+					<% end %>
+					<% if friendship.blocked? %>
+						<em>This friend is blocked.</em> <%= link_to "Unblock Friendship", edit_user_friendship_path(friendship) %>
 					<% end %>
 			</div>
 		</div>
