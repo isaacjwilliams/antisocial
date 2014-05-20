@@ -11,12 +11,12 @@ gem 'draper'
 
 group :test do
 	gem "shoulda"
-	gem "pry-debugger"
 	gem "factory_girl_rails"
 end
 
 group :development, :test do
 	gem 'sqlite3'
+	gem "pry-debugger"
 end
 
 group :production do
