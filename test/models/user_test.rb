@@ -69,4 +69,14 @@ class UserTest < ActiveSupport::TestCase
 			end
 		end
 	end
+
+	context "#has_blocked?" do
+		should "return true if a user has blocked another user" do
+			assert users(:isaac).has_blocked?(users(:blocked_friend))
+		end
+
+		should "return false if a user has not blocked another user" do
+			assert !users(:isaac).has_blocked?(users(:jack))
+		end
+	end
 end

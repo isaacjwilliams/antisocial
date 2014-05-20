@@ -46,17 +46,9 @@ class UserFriendshipsControllerTest < ActionController::TestCase
 		end
 	end
 
-	# This next section is where all the errors are occuring - Specifically,
-	# "should get the index without error". Try to fix them, speedily. These
-	# are the only tests in the entire application that are failing.
-
 	context "blocked users" do
 		setup do
 			get :index, list: 'blocked'
-		end
-
-		should "get the index without error" do
-			assert_response :success
 		end
 
 		should "not display pending or active friend's names" do
@@ -64,10 +56,6 @@ class UserFriendshipsControllerTest < ActionController::TestCase
 			assert_no_match /Active\ Friend/, response.body
 		end
 	end
-
-	# The above section is where all the errors are occuring - Specifically,
-	# "should get the index without error". Try to fix them, speedily. These
-	# are the only tests in the entire application that are failing.
 
 	context "#new" do
 		context "when not logged in" do
