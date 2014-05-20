@@ -1,1 +1,5 @@
-<p><%= current_user.profile_name %> accepted friendship with <%= link_to "#{current_user.user_friendships.load.last.friend.profile_name}", profile_path(current_user.user_friendships.load.last.friend) %>.</p>
+<% if activity.targetable != nil %>
+	<p><%= current_user.profile_name %> accepted friendship with <%= link_to "#{activity.targetable.friend.profile_name}", profile_path(activity.targetable.friend.profile_name) %>.</p>
+<% else %>
+	<p style="color: red">An error occured when trying to load this activity.</p>
+<% end %>

@@ -15,7 +15,9 @@
 		<div><%= submit_tag "Delete Friendship", class: "btn btn-warning" %></div>
 	<% end %>
 
-	<%= form_for @user_friendship, url: block_user_friendship_path(@user_friendship), method: :put do |form| %>
-		<div class="block-friendship-btn-index"><%= submit_tag "Block Friendship", class: "btn btn-danger" %></div>
+	<% if !current_user.has_blocked?(@user_friendship.friend) %>
+		<%= form_for @user_friendship, url: block_user_friendship_path(@user_friendship), method: :put do |form| %>
+			<div class="block-friendship-btn-index"><%= submit_tag "Block Friendship", class: "btn btn-danger" %></div>
+		<% end %>
 	<% end %>
 </div>

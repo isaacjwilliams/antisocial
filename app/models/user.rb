@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
                                       class_name: 'UserFriendship',
                                       foreign_key: :user_id,
                                       dependent: :delete_all
-  has_many :blocked_friends, through: :pending_user_friendships, source: :friend, dependent: :delete_all
+  has_many :blocked_friends, through: :blocked_user_friendships, source: :friend, dependent: :delete_all
   has_many :activities
 
   def full_name
@@ -64,5 +64,9 @@ class User < ActiveRecord::Base
     activity.action = action
     activity.save!
     activity
+  end
+
+  def has_blocked?(other_user)
+    blocked_friends.include?(other_user)
   end
 end

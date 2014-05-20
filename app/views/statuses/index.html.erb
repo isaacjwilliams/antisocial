@@ -4,29 +4,56 @@
 
 <%= link_to 'New Status', new_status_path, class: "new-status btn btn-primary" %>
 
-
-<% @statuses.each do |status| %>
-    <div class="status">
-      <div class="row">
-        <div class="col-md-1">
-          <div><%= link_to image_tag(status.user.gravatar_url, class: "img-rounded"), profile_path(status.user) %></div>
+<% if user_signed_in? %>
+    <% @statuses.each do |status| %>
+        <% if !current_user.has_blocked?(status.user) %>
+            <div class="status">
+                <div class="row">
+                    <div class="col-md-1">
+                        <div><%= link_to image_tag(status.user.gravatar_url, class: "img-rounded"), profile_path(status.user) %></div>
+                    </div>
+                    <div class="col-md-6">
+                        <strong><%= status.user.profile_name %></strong>
+                        <p><%= status.content %></p>
+                        <p>
+                            <span><%= link_to time_ago_in_words(status.created_at) + " ago", status %></span>
+                            <% if user_signed_in? %>
+                                <% if status.user == current_user %>
+                                    <span class="admin">| <%= link_to 'Edit', edit_status_path(status) %></span>
+                                    <span class="admin">| <%= link_to 'Destroy', status, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+                                <% end %>
+                            <% end %>
+                        </p>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        <% end %>
+    <% end %>
+<% else %>
+    <% @statuses.each do |status| %>
+        <div class="status">
+            <div class="row">
+                <div class="col-md-1">
+                    <div><%= link_to image_tag(status.user.gravatar_url, class: "img-rounded"), profile_path(status.user) %></div>
+                </div>
+                <div class="col-md-6">
+                    <strong><%= status.user.profile_name %></strong>
+                    <p><%= status.content %></p>
+                    <p>
+                        <span><%= link_to time_ago_in_words(status.created_at) + " ago", status %></span>
+                        <% if user_signed_in? %>
+                            <% if status.user == current_user %>
+                                <span class="admin">| <%= link_to 'Edit', edit_status_path(status) %></span>
+                                <span class="admin">| <%= link_to 'Destroy', status, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+                            <% end %>
+                        <% end %>
+                    </p>
+                </div>
+            </div>
+            <hr>
         </div>
-        <div class="col-md-6">
-          <strong><%= status.user.profile_name %></strong>
-          <p><%= status.content %></p>
-          <p>
-            <span><%= link_to time_ago_in_words(status.created_at) + " ago", status %></span>
-            <% if user_signed_in? %>
-              <% if status.user == current_user %>
-                <span class="admin">| <%= link_to 'Edit', edit_status_path(status) %></span>
-                <span class="admin">| <%= link_to 'Destroy', status, method: :delete, data: { confirm: 'Are you sure?' } %></span>
-              <% end %>
-            <% end %>
-          </p>
-        </div>
-      </div>
-      <hr>
-    </div>
+    <% end %>
 <% end %>
 
 <%= will_paginate @statuses %>
