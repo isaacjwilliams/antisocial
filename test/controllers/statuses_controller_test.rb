@@ -17,7 +17,7 @@ class StatusesControllerTest < ActionController::TestCase
     users(:jack).statuses.create(content: "Non-Blocked Status")
     get :index
     assert_match /Non\-Blocked\ Status/, response.body
-    assert_no_match /Blocked\ Status/, response.body
+    assert_no_match /[^-]Blocked\ Status/, response.body
   end
 
   test "should be redirected when not logged in" do
@@ -40,7 +40,7 @@ class StatusesControllerTest < ActionController::TestCase
 
   test "should create status when logged in" do
     sign_in users(:isaac)
-    
+
     assert_difference('Status.count') do
       post :create, status: { content: @status.content }
     end
@@ -50,7 +50,7 @@ class StatusesControllerTest < ActionController::TestCase
 
   test "should create an activity item for the status when logged in" do
     sign_in users(:isaac)
-    
+
     assert_difference('Activity.count') do
       post :create, status: { content: @status.content }
     end

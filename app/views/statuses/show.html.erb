@@ -13,7 +13,7 @@
 	<p>
 	  <%= @status.content %>
 	</p>
-	<%= link_to @status.document.image_file_name, @status.document.image.url %>
+	<%= link_to @status.document.image_file_name, @status.document.image.url if @status.document %>
 	<hr>
 </div>
 
