@@ -9,6 +9,7 @@ gem 'will_paginate', '~> 3.0'
 gem 'state_machine'
 gem 'draper'
 gem 'paperclip'
+gem 'protected_attributes'
 
 group :test do
 	gem "shoulda"

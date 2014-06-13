@@ -6,7 +6,7 @@ class CreateDocuments < ActiveRecord::Migration
     	end
 
     	add_index :documents, :user_id
-    	add_attachment :documents, :attachment
+    	add_attachment :documents, :image
     	add_column :statuses, :document_id, :integer
   	end
 end

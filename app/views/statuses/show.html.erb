@@ -13,6 +13,8 @@
 	<p>
 	  <%= @status.content %>
 	</p>
+	<%= link_to @status.document.image_file_name, @status.document.image.url %>
+	<hr>
 </div>
 
 <% if user_signed_in? %>

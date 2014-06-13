@@ -1,4 +1,5 @@
 class Document < ActiveRecord::Base
-	attr_accessible :attachment
-	has_attached_file :attachment
+	attr_accessible :image, :image_file_name
+	has_attached_file :image
+	validates_attachment_content_type :image, :content_type => /\Aimage/
 end

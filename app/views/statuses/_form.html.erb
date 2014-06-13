@@ -1,4 +1,4 @@
-<%= simple_form_for(@status) do |f| %>
+<%= simple_form_for(@status, html: {multipart: true}) do |f| %>
   <% if @status.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@status.errors.count, "error") %> prohibited this status from being saved:</h2>
@@ -12,6 +12,10 @@
   <% end %>
 
   <%= f.input :content, input_html: { rows: 8, cols: 30 } %>
+  <%= f.fields_for :document do |document_fields| %>
+    <%= document_fields.input :image, as: :file %>
+  <% end %>
+
   <div class="actions">
     <%= f.submit class: 'btn btn-success' %>
   </div>

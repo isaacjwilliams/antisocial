@@ -28,10 +28,10 @@ ActiveRecord::Schema.define(version: 20140523213123) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "attachment_file_name"
-    t.string   "attachment_content_type"
-    t.integer  "attachment_file_size"
-    t.datetime "attachment_updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "documents", ["user_id"], name: "index_documents_on_user_id"
