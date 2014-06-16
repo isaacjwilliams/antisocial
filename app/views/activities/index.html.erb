@@ -10,8 +10,12 @@
 			</div>
 			<div class="col-md-6">
 				<strong><%= activity.user.profile_name %></strong>
-				<%= render partial: "activities/#{activity.targetable_type.underscore}/#{activity.action}", 
+				<%= render partial: "activities/#{activity.targetable_type.underscore}/#{activity.action}",
             	locals: { activity: activity } %>
+            	<% if activity.targetable.document %>
+            		<span class="bg-info image-attachment"><%= link_to activity.targetable.document.image_file_name, activity.targetable.document.image.url, :target => "_blank" %></span>
+            		<br>
+            	<% end %>
             	<small><%= time_ago_in_words(activity.created_at) %> ago</small>
 			</div>
 		</div>

@@ -13,7 +13,10 @@
 	<p>
 	  <%= @status.content %>
 	</p>
-	<%= link_to @status.document.image_file_name, @status.document.image.url if @status.document %>
+	<% if @status.document %>
+		<span class="bg-info image-attachment"><%= link_to @status.document.image_file_name, @status.document.image.url, :target => "_blank" %></span>
+		<br>
+	<% end %>
 	<hr>
 </div>
 
