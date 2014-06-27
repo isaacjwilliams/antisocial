@@ -13,6 +13,15 @@
 
   <%= f.input :content, input_html: { rows: 8, cols: 30 } %>
   <%= f.fields_for :document do |document_fields| %>
+    <% if document_fields.object.image? %>
+      <div class="control-group">
+        <label class="control-label">Current image</label>
+        <div class="controls">
+          <%= link_to document_fields.object.image_file_name, document_fields.object.image.url %>
+        </div>
+      </div>
+      <%= document_fields.input :remove_image, as: :boolean, label: "Remove image?" %>
+    <% end %>
     <%= document_fields.input :image, as: :file %>
   <% end %>
 

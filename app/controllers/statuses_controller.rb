@@ -48,8 +48,13 @@ class StatusesController < ApplicationController
   # PATCH/PUT /statuses/1
   # PATCH/PUT /statuses/1.json
   def update
+
+    @document = @status.document
+
+    binding.pry
+
     respond_to do |format|
-      if @status.update(status_params)
+      if @status.update_attributes(status_params) && @document && @document.update_attributes(status_params[:document_attributes])
         current_user.create_activity(@status, 'updated')
         format.html { redirect_to @status, notice: 'Status was successfully updated.' }
         format.json { head :no_content }
@@ -79,6 +84,6 @@ class StatusesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def status_params
-      params.require(:status).permit(:content, :document_attributes => :image )
+      params.require(:status).permit(:content, :remove_image, :document_attributes => :image)
     end
 end
