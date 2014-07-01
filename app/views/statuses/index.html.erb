@@ -46,6 +46,12 @@
                 <div class="col-md-6">
                     <strong><%= status.user.profile_name %></strong>
                     <p><%= status.content %></p>
+
+                    <% if status.document %>
+                        <span class="bg-info image-attachment"><%= link_to status.document.image_file_name, status.document.image.url, :target => "_blank" %></span>
+                        <br>
+                    <% end %>
+
                     <p>
                         <span><%= link_to time_ago_in_words(status.created_at) + " ago", status %></span>
                         <% if user_signed_in? %>

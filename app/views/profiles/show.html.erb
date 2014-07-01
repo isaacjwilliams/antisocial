@@ -46,7 +46,16 @@
 	<% @statuses.each do |status| %>
 		<div class="well">
 			<%= status.content %>
+
+			<br>
+
+			<% if status.document %>
+				<span class="bg-info image-attachment"><%= link_to status.document.image_file_name, status.document.image.url, :target => "_blank" %></span>
+				<br>
+			<% end %>
+
 			<hr />
+
 			<%= link_to time_ago_in_words(status.created_at), status_path(status) %> ago
 			<% if user_signed_in? and @user == current_user %>
 				| <%= link_to 'Destroy', status, method: :delete, data: { confirm: 'Are you sure?' } %>

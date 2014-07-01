@@ -20,12 +20,12 @@
           <%= link_to document_fields.object.image_file_name, document_fields.object.image.url %>
         </div>
       </div>
-      <%= document_fields.input :remove_image, as: :boolean, label: "Remove image?" %>
+      <%= document_fields.input :_destroy, as: :boolean, label: "Remove image?" %>
     <% end %>
     <%= document_fields.input :image, as: :file %>
   <% end %>
 
   <div class="actions">
-    <%= f.submit class: 'btn btn-success' %>
+    <%= f.submit class: 'btn btn-success submit-btn' %>
   </div>
 <% end %>
