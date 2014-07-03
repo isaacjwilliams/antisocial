@@ -12,7 +12,7 @@
 				<strong><%= activity.user.profile_name %></strong>
 				<%= render partial: "activities/#{activity.targetable_type.underscore}/#{activity.action}",
             	locals: { activity: activity } %>
-            	<% if activity.targetable.document %>
+            	<% if activity.targetable.respond_to?(:document) && activity.targetable.document %>
             		<span class="bg-info image-attachment"><%= link_to activity.targetable.document.image_file_name, activity.targetable.document.image.url, :target => "_blank" %></span>
             		<br>
             	<% end %>
