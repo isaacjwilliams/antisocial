@@ -1,2 +1,2 @@
-<p>Created a <%= link_to "status", status_path(activity.targetable) %>.</p>
-<p>"<%= activity.targetable.content %>"</p>
+<p>Created a <%= link_to_if activity.targetable, "status", status_path(activity.targetable) %>.</p>
+<% if activity.targetable %><p>"<%= activity.targetable.content %>"</p><% end %>

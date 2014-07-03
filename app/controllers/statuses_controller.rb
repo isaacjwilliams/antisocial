@@ -49,6 +49,7 @@ class StatusesController < ApplicationController
   # PATCH/PUT /statuses/1
   # PATCH/PUT /statuses/1.json
   def update
+    @document = @status.document
     respond_to do |format|
       if @status.update_attributes(status_params)
         current_user.create_activity(@status, 'updated')
